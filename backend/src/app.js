@@ -11,6 +11,7 @@ const corsOptions = {
   origin: [
     'http://localhost:5173',
     'http://localhost:3000',
+    'https://sweet-heaven.vercel.app',
     'https://sweet-heaven.onrender.com',
     process.env.FRONTEND_URL || 'http://localhost:5173'
   ],
