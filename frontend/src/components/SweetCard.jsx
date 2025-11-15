@@ -31,6 +31,11 @@ const SweetCard = ({ sweet, isAdmin = false, onPurchase, onDelete, onEdit, onAdd
     setShowQuantity(false);
   };
 
+  const handleBuyNow = () => {
+    onAddToCart?.(sweet._id, quantity);
+    window.location.href = '/cart';
+  };
+
   return (
     <Link to={`/product/${sweet._id}`} style={{ textDecoration: 'none' }}>
       <div className="sweet-card">
@@ -133,19 +138,43 @@ const SweetCard = ({ sweet, isAdmin = false, onPurchase, onDelete, onEdit, onAdd
                   >
                     Add
                   </button>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleBuyNow();
+                    }}
+                    disabled={sweet.quantity === 0}
+                    className="btn btn-success"
+                    style={{ minWidth: '80px' }}
+                  >
+                    Buy Now
+                  </button>
                 </>
               ) : (
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowQuantity(true);
-                  }}
-                  disabled={sweet.quantity === 0}
-                  className="btn btn-primary"
-                  style={{ width: '100%' }}
-                >
-                  {sweet.quantity === 0 ? 'Out of Stock' : 'Add to Cart'}
-                </button>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowQuantity(true);
+                    }}
+                    disabled={sweet.quantity === 0}
+                    className="btn btn-primary"
+                    style={{ flex: 1 }}
+                  >
+                    {sweet.quantity === 0 ? 'Out of Stock' : 'Add to Cart'}
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowQuantity(true);
+                    }}
+                    disabled={sweet.quantity === 0}
+                    className="btn btn-success"
+                    style={{ flex: 1 }}
+                  >
+                    Buy Now
+                  </button>
+                </div>
               )}
             </>
           ) : (

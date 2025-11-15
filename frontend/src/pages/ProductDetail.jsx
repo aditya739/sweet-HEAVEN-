@@ -48,6 +48,19 @@ const ProductDetail = ({ user }) => {
     }
   };
 
+  const handleBuyNow = async () => {
+    if (quantity <= 0) {
+      setError('Please select a valid quantity');
+      return;
+    }
+    const success = await addToCart(id, quantity);
+    if (success) {
+      navigate('/cart');
+    } else {
+      setError('Failed to add to cart');
+    }
+  };
+
   const getSweetEmoji = (category) => {
     const emojiMap = {
       'Gulab Jamun': '🍫',
@@ -264,21 +277,33 @@ const ProductDetail = ({ user }) => {
               </div>
             </div>
 
-            {/* Add to Cart Button */}
-            <button
-              onClick={handleAddToCart}
-              disabled={sweet.quantity === 0}
-              className="btn btn-primary"
-              style={{
-                width: '100%',
-                padding: '16px',
-                fontSize: '18px',
-                fontWeight: '600',
-                marginBottom: '12px'
-              }}
-            >
-              🛒 Add to Cart
-            </button>
+            {/* Add to Cart & Buy Now Buttons */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
+              <button
+                onClick={handleAddToCart}
+                disabled={sweet.quantity === 0}
+                className="btn btn-primary"
+                style={{
+                  padding: '16px',
+                  fontSize: '18px',
+                  fontWeight: '600'
+                }}
+              >
+                🛒 Add to Cart
+              </button>
+              <button
+                onClick={handleBuyNow}
+                disabled={sweet.quantity === 0}
+                className="btn btn-success"
+                style={{
+                  padding: '16px',
+                  fontSize: '18px',
+                  fontWeight: '600'
+                }}
+              >
+                💳 Buy Now
+              </button>
+            </div>
 
             {/* Back Button */}
             <button
