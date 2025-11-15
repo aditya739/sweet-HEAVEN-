@@ -1,0 +1,34 @@
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+const authRoutes = require('./routes/auth');
+const sweetsRoutes = require('./routes/sweets');
+const cartRoutes = require('./routes/cart');
+const orderRoutes = require('./routes/orders');
+const adminRoutes = require('./routes/admin');
+const publicRoutes = require('./routes/public');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/sweets', sweetsRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/public', publicRoutes);
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', database: 'MongoDB' });
+});
+
+module.exports = app;

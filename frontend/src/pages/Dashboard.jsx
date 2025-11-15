@@ -1,0 +1,102 @@
+import { useState, useEffect } from 'react';
+import { sweetsAPI } from '../utils/api';
+import { useCart } from '../hooks/useCart';
+import SweetCard from '../components/SweetCard';
+import SearchBar from '../components/SearchBar';
+
+const Dashboard = ({ user }) => {
+  const [sweets, setSweets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    fetchSweets();
+  }, []);
+
+  const fetchSweets = async () => {
+    try {
+      setLoading(true);
+      const { data } = await sweetsAPI.getAllSweets();
+      setSweets(data.sweets);
+      setError('');
+    } catch (err) {
+      setError('Failed to load sweets');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSearch = async (filters) => {
+    try {
+      setLoading(true);
+      if (Object.values(filters).every(v => v === undefined)) {
+        await fetchSweets();
+      } else {
+        const { data } = await sweetsAPI.searchSweets(filters);
+        setSweets(data.sweets);
+      }
+    } catch {
+      setError('Search failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleAddToCart = async (sweetId, quantity) => {
+    const success = await addToCart(sweetId, quantity);
+    if (success) {
+      setSuccessMessage('✅ Added to cart!');
+      setTimeout(() => setSuccessMessage(''), 3000);
+    } else {
+      setError('Failed to add to cart');
+    }
+  };
+
+  return (
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #FFF9F5 0%, #F5FFFE 100%)', paddingTop: '80px', paddingBottom: '40px' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h1 className="section-title">Our Premium Collection</h1>
+          <p style={{ fontSize: '16px', color: '#2c2c2c', marginTop: '10px', fontWeight: '600' }}>
+            Handcrafted sweets made with the finest ingredients
+          </p>
+        </div>
+
+        {error && <div className="alert alert-error">{error}</div>}
+
+        {successMessage && (
+          <div className="alert alert-success">{successMessage}</div>
+        )}
+
+        <SearchBar onSearch={handleSearch} />
+
+        {loading ? (
+          <div className="loading">
+            <div className="spinner"></div>
+            <span>Loading our delicious collection...</span>
+          </div>
+        ) : sweets.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '60px 20px', color: '#2c2c2c' }}>
+            <p style={{ fontSize: '18px', fontWeight: '700' }}>No sweets available at the moment</p>
+          </div>
+        ) : (
+          <div className="grid grid-4">
+            {sweets.map((sweet) => (
+              <SweetCard
+                key={sweet._id}
+                sweet={sweet}
+                isAdmin={user?.role === 'admin'}
+                onAddToCart={handleAddToCart}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
