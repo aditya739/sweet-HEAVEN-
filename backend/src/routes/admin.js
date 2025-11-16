@@ -11,11 +11,11 @@ router.use(authMiddleware, adminMiddleware);
 router.get('/stats', adminController.getDashboardStats);
 
 // Discount Management
+router.post('/discounts/validate', adminController.validateDiscount);
 router.post('/discounts', adminController.createDiscount);
 router.get('/discounts', adminController.getAllDiscounts);
 router.put('/discounts/:id', adminController.updateDiscount);
 router.delete('/discounts/:id', adminController.deleteDiscount);
-router.post('/discounts/validate', adminController.validateDiscount);
 
 // Banner Management
 router.post('/banners', adminController.createBanner);
