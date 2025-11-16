@@ -37,11 +37,11 @@ body {
 /* Navbar - Enhanced Visibility */
 nav {
   background: white;
-  border-bottom: 3px solid #FF6B9D;
+  border-bottom: 1px solid #f5f5f5;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 nav .container {
@@ -90,14 +90,14 @@ nav button {
   cursor: pointer;
   font-weight: 700;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+  box-shadow: none;
   margin: 0;
 }
 
 nav button:hover {
   background: #FF5A8F;
-  box-shadow: 0 6px 16px rgba(255, 107, 157, 0.4);
-  transform: translateY(-2px);
+  box-shadow: none;
+  transform: none;
 }
 
 /* Container */
@@ -129,52 +129,52 @@ nav button:hover {
 .btn-primary {
   background: #FF6B9D;
   color: white;
-  box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+  box-shadow: none;
 }
 
 .btn-primary:hover:not(:disabled) {
   background: #FF5A8F;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 107, 157, 0.4);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-secondary {
   background: #000000;
   color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
   font-weight: 700;
 }
 
 .btn-secondary:hover:not(:disabled) {
   background: #333333;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-danger {
   background: #FF6B9D;
   color: white;
-  box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+  box-shadow: none;
   font-weight: 700;
 }
 
 .btn-danger:hover:not(:disabled) {
   background: #FF5A8F;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 107, 157, 0.4);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-success {
   background: #FF6B9D;
   color: white;
-  box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+  box-shadow: none;
   font-weight: 700;
 }
 
 .btn-success:hover:not(:disabled) {
   background: #FF5A8F;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 107, 157, 0.4);
+  transform: none;
+  box-shadow: none;
 }
 
 /* Section Title */
@@ -269,8 +269,8 @@ nav button:hover {
 .form-control {
   width: 100%;
   padding: 14px 18px;
-  border: 2px solid #FF6B9D;
-  border-radius: 12px;
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
   font-size: 16px;
   transition: all 0.3s ease;
   font-family: inherit;
@@ -281,26 +281,27 @@ nav button:hover {
 
 .form-control:focus {
   outline: none;
-  border-color: #FF5A8F;
-  box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.2);
+  border-color: #FF6B9D;
+  box-shadow: none;
   background-color: white;
 }
 
 /* Sweet Card - Enhanced */
 .sweet-card {
   background: white;
-  border-radius: 20px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
+  box-shadow: none;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  border: 2px solid #FF6B9D;
+  border: 1px solid #f5f5f5;
 }
 
 .sweet-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: none;
+  box-shadow: none;
+  border-color: #FF6B9D;
 }
 
 .sweet-card-image {
@@ -330,7 +331,8 @@ nav button:hover {
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  border: 1px solid #FF6B9D;
 }
 
 .sweet-card-body {
@@ -372,19 +374,19 @@ nav button:hover {
   color: #FF6B9D;
   font-weight: 700;
   font-size: 13px;
-  box-shadow: 0 2px 8px rgba(255, 107, 157, 0.2);
+  box-shadow: none;
 }
 
 .quantity-badge.low {
   background: #FFE5F0;
   color: #FF6B9D;
-  box-shadow: 0 2px 8px rgba(255, 107, 157, 0.2);
+  box-shadow: none;
 }
 
 .quantity-badge.out {
   background: #f5f5f5;
   color: #000000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
 .sweet-card-actions {
@@ -407,11 +409,11 @@ nav button:hover {
 .form-container {
   background: white;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: none;
   max-width: 480px;
   margin: 60px auto;
-  border: 2px solid #FF6B9D;
+  border: 1px solid #f5f5f5;
 }
 
 .form-container h2 {
@@ -457,9 +459,10 @@ nav button:hover {
 
 .admin-table-container {
   overflow-x: auto;
-  border-radius: 20px;
+  border-radius: 12px;
   background: white;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  border: 1px solid #f5f5f5;
 }
 
 .admin-table {
@@ -472,14 +475,15 @@ nav button:hover {
 .admin-table td {
   padding: 18px;
   text-align: left;
-  border-bottom: 2px solid #FF6B9D;
+  border-bottom: 1px solid #f5f5f5;
   font-weight: 600;
   color: #000000;
 }
 
 .admin-table th {
-  background: #f5f5f5;
+  background: #ffffff;
   font-size: 16px;
+  border-bottom: 2px solid #f5f5f5;
 }
 
 .admin-table td {
