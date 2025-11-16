@@ -51,6 +51,7 @@ nav .container {
   padding: 16px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 nav h1 {
@@ -104,21 +105,25 @@ nav button:hover {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
+  width: 100%;
 }
 
 /* Buttons - Enhanced */
 .btn {
-  padding: 14px 32px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: 700;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   letter-spacing: 0.3px;
+  min-height: 44px;
 }
 
 .btn:disabled {
@@ -179,23 +184,23 @@ nav button:hover {
 
 /* Section Title */
 .section-title {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 700;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   text-align: center;
   letter-spacing: -0.5px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 /* Alert Messages - Enhanced */
 .alert {
-  padding: 18px 24px;
-  border-radius: 20px;
-  margin-bottom: 24px;
-  font-size: 16px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
   font-weight: 600;
-  border-left: 5px solid;
+  border-left: 4px solid;
 }
 
 .alert-error {
@@ -244,7 +249,7 @@ nav button:hover {
 }
 
 .grid-4 {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
 .grid-responsive {
@@ -255,28 +260,29 @@ nav button:hover {
 
 /* Form Styles - Enhanced */
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .form-label {
   display: block;
-  margin-bottom: 10px;
-  font-weight: 700;
+  margin-bottom: 8px;
+  font-weight: 600;
   color: #000000;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .form-control {
   width: 100%;
-  padding: 14px 18px;
+  padding: 12px 16px;
   border: 1px solid #f5f5f5;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   transition: all 0.3s ease;
   font-family: inherit;
   background-color: white;
   color: #000000;
   font-weight: 500;
+  min-height: 44px;
 }
 
 .form-control:focus {
@@ -296,6 +302,7 @@ nav button:hover {
   display: flex;
   flex-direction: column;
   border: 1px solid #f5f5f5;
+  height: 100%;
 }
 
 .sweet-card:hover {
@@ -336,44 +343,44 @@ nav button:hover {
 }
 
 .sweet-card-body {
-  padding: 20px;
+  padding: 16px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
 .sweet-card-title {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   color: #000000;
   margin-bottom: 8px;
-  letter-spacing: -0.3px;
-  line-height: 1.2;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
 }
 
 .sweet-card-price {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: #FF6B9D;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .sweet-card-quantity {
-  font-size: 15px;
+  font-size: 13px;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   flex-grow: 1;
   font-weight: 600;
 }
 
 .quantity-badge {
   display: inline-block;
-  padding: 8px 14px;
-  border-radius: 20px;
+  padding: 6px 12px;
+  border-radius: 16px;
   background: #FFE5F0;
   color: #FF6B9D;
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 12px;
   box-shadow: none;
 }
 
@@ -390,30 +397,32 @@ nav button:hover {
 }
 
 .sweet-card-actions {
-  padding: 0 20px 20px 20px;
+  padding: 16px 20px 20px 20px;
   display: flex;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .sweet-card-actions button {
   flex: 1;
-  min-width: 100px;
-  font-size: 14px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  font-weight: 700;
+  min-width: 80px;
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  min-height: 40px;
 }
 
 /* Form Container */
 .form-container {
   background: white;
-  padding: 40px;
+  padding: 32px;
   border-radius: 12px;
   box-shadow: none;
   max-width: 480px;
-  margin: 60px auto;
+  margin: 40px auto;
   border: 1px solid #f5f5f5;
+  width: 100%;
 }
 
 .form-container h2 {
@@ -473,11 +482,12 @@ nav button:hover {
 
 .admin-table th,
 .admin-table td {
-  padding: 18px;
+  padding: 16px;
   text-align: left;
   border-bottom: 1px solid #f5f5f5;
   font-weight: 600;
   color: #000000;
+  font-size: 14px;
 }
 
 .admin-table th {
