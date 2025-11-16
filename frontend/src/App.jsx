@@ -6,7 +6,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
-import HomePastel from './pages/HomePastel';
 import Dashboard from './pages/Dashboard';
 import ProductDetail from './pages/ProductDetail';
 import AdminPanel from './pages/AdminPanel';
@@ -23,7 +22,7 @@ function App() {
     <BrowserRouter>
       <Navbar user={user} onLogout={logout} cartCount={user ? getCartCount() : 0} />
       <Routes>
-        <Route path="/" element={<HomePastel cartCount={user ? getCartCount() : 0} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login onLogin={login} />} />
         <Route path="/register" element={<Register onLogin={login} />} />
         <Route
