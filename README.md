@@ -4,7 +4,7 @@
 ## 🚀 Live Demo  
 👉 **https://sweet-heaven.vercel.app**
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Now-green?style=for-the-badge)](https://sweet-heaven.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Now-green?style=for-the-badge)](https://sweet-heaven.vercel.app/)
 
 A full-stack JavaScript e-commerce application for managing a sweet shop with user authentication, shopping cart, order management, and admin controls. Built with **TDD (Red → Green → Refactor)** methodology and MongoDB.
 
