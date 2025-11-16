@@ -55,6 +55,22 @@ const Dashboard = ({ user }) => {
     }
   };
 
+  const handleEdit = (sweet) => {
+    window.location.href = `/admin?edit=${sweet._id}`;
+  };
+
+  const handleDelete = async (sweetId) => {
+    if (window.confirm('Are you sure you want to delete this sweet?')) {
+      try {
+        await sweetsAPI.deleteSweet(sweetId);
+        setSuccessMessage('✅ Sweet deleted!');
+        fetchSweets();
+      } catch (err) {
+        setError('Failed to delete sweet');
+      }
+    }
+  };
+
   return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #FFF9F5 0%, #F5FFFE 100%)', paddingTop: '80px', paddingBottom: '40px' }}>
       <div className="container">
@@ -90,6 +106,8 @@ const Dashboard = ({ user }) => {
                 sweet={sweet}
                 isAdmin={user?.role === 'admin'}
                 onAddToCart={handleAddToCart}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
               />
             ))}
           </div>
