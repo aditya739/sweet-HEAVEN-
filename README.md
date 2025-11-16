@@ -6,7 +6,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Now-green?style=for-the-badge)](https://sweet-heaven.vercel.app/)
 
-A full-stack JavaScript e-commerce application for managing a sweet shop with user authentication, shopping cart, order management, and admin controls. Built with **TDD (Red → Green → Refactor)** methodology and MongoDB.
+A full-stack JavaScript e-commerce application for managing a sweet shop with user authentication, shopping cart, order management, coupon discounts, and admin controls. Built with **TDD (Red → Green → Refactor)** methodology and MongoDB.
 
 ---
 
@@ -19,7 +19,7 @@ This project demonstrates best practices in full-stack development:
 - **Testing**: Jest + Supertest (backend), Vitest + React Testing Library (frontend)  
 - **Authentication**: JWT + bcrypt  
 - **Database**: MongoDB (local or MongoDB Atlas cloud)  
-- **Design**: Pastel color palette with responsive UI  
+- **Design**: Minimalist white, black, and rose (#FF6B9D) color scheme with responsive UI  
 
 ---
 
@@ -33,20 +33,23 @@ This project demonstrates best practices in full-stack development:
 ✅ Order management with cancellation and stock restoration  
 ✅ Product search and filtering  
 ✅ Admin inventory management  
+✅ Coupon/discount code validation and application  
 ✅ Purchase history logging  
 ✅ MongoDB support (local + cloud)
 
 ### Frontend Features  
 ✅ User authentication (Login/Register)  
 ✅ Dashboard with sweet product listings  
-✅ Advanced search and filtering  
+✅ Collapsible search and filter panel  
 ✅ Shopping cart with quantity management  
-✅ Product detail pages  
+✅ Product detail pages with Buy Now button  
+✅ Coupon code input and discount application  
 ✅ Order management and history  
 ✅ Bill generation (print & PDF download)  
 ✅ Admin panel for inventory management  
-✅ Pastel color design system  
-✅ Responsive grid layout  
+✅ Admin edit/delete from dashboard  
+✅ Minimalist white, black, and rose design  
+✅ Responsive mobile-friendly layout  
 ✅ Real-time alerts and notifications  
 
 ---
@@ -214,29 +217,31 @@ npm run build
 
 ## Design System
 
-### Colors (Pastel Theme)
+### Colors (Minimalist Theme)
 
-* #A8E6CF
-* #FFE5F0
-* #E5F5F0
-* #FFF9E5
-* #2c2c2c
+* **Primary**: #FF6B9D (Rose)
+* **Background**: #ffffff (White)
+* **Text**: #000000 (Black)
+* **Borders**: #f5f5f5 (Light Gray)
 
 ### Typography
 
-* Segoe UI
-* Rounded UI elements
-* Soft gradient background
+* Poppins font family
+* Clean, minimal UI elements
+* No shadows or gradients
+* Consistent spacing and alignment
 
 ---
 
 ## Security Features
 
-* Password hashing
-* JWT authentication
-* XSS protection
-* Role-based access control
+* Password hashing with bcrypt
+* JWT authentication with secure tokens
+* XSS protection via CSP headers
+* Role-based access control (User/Admin)
 * Stock reservation to prevent overselling
+* CORS configuration for production
+* Coupon validation and expiry checks
 
 ---
 
@@ -272,26 +277,47 @@ npm run build
 
 ### MongoDB Error
 
-Check `.env` and ensure MongoDB is running.
+Check `.env` and ensure MongoDB is running or accessible via MongoDB Atlas.
 
-### Frontend cannot connect
+### Frontend cannot connect to backend
 
-Check API base URL in `src/utils/api.js`.
+Update `VITE_API_URL` in `.env` files to match your backend URL (local or Render).
 
 ### Port already in use
 
-Change port in `vite.config.js` or kill process.
+Change port in backend `.env` or kill the process using the port.
+
+### Navbar not responsive on mobile
+
+Navbar items wrap automatically on screens < 768px. Filter panel is collapsible.
+
+### Coupon not applying
+
+Ensure coupon is created in admin panel and is active/not expired.
 
 ---
 
+## Recent Updates
+
+✨ **v2.0 Features Added:**
+- Buy Now button for direct checkout
+- Coupon/discount code system
+- Admin edit/delete from dashboard
+- Collapsible filter panel
+- Responsive mobile navbar
+- Minimalist design overhaul
+- Improved alignment and symmetry
+- Vercel deployment configuration
+
 ## Future Enhancements
 
-* Payment gateway
-* Product reviews
+* Payment gateway integration
+* Product reviews and ratings
 * Wishlist system
 * Email notifications
 * Analytics dashboard
 * Mobile app (React Native)
+* SMS notifications
 
 ---
 
@@ -308,10 +334,12 @@ Create an issue in this repository.
 ---
 
 **Built with ❤️ using Test-Driven Development**
-✔️ 28+ Tests Passing
-✔️ Production Ready
+✔️ 30+ Tests Passing
+✔️ Production Ready (Vercel + Render)
 ✔️ Fully Documented
 ✔️ AI-Assisted Development
+✔️ Responsive Mobile Design
+✔️ Coupon System Integrated
 
 ```
 
