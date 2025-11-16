@@ -31,7 +31,7 @@ const Navbar = ({ user, onLogout, cartCount = 0 }) => {
             <h1>Sweet Heaven</h1>
           </Link>
 
-          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
             {user ? (
               <>
                 <span style={{ fontSize: '14px', display: 'flex', alignItems: 'center', gap: '4px' }}>
