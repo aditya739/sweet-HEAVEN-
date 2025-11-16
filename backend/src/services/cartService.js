@@ -41,7 +41,12 @@ const cartService = {
     const item = cart.items.find(item => item.sweetId.toString() === sweetId);
     if (!item) throw new Error('Item not in cart');
 
+    newQuantity = parseInt(newQuantity);
+    if (newQuantity < 0) throw new Error('Quantity cannot be negative');
+
     const sweet = await Sweet.findById(sweetId);
+    if (!sweet) throw new Error('Sweet not found');
+
     const quantityDiff = newQuantity - item.quantity;
 
     if (quantityDiff > 0 && sweet.quantity < quantityDiff) {
@@ -52,7 +57,7 @@ const cartService = {
     sweet.quantity -= quantityDiff;
     await sweet.save();
 
-    if (newQuantity <= 0) {
+    if (newQuantity === 0) {
       cart.items = cart.items.filter(item => item.sweetId.toString() !== sweetId);
     } else {
       item.quantity = newQuantity;
