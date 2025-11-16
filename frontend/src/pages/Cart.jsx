@@ -8,9 +8,28 @@ const Cart = () => {
   const { cart, updateCartItem, removeFromCart, getCartTotal, clearCart } = useCart();
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [notes, setNotes] = useState('');
+  const [couponCode, setCouponCode] = useState('');
+  const [discount, setDiscount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  const handleApplyCoupon = async () => {
+    if (!couponCode.trim()) {
+      setError('Please enter a coupon code');
+      return;
+    }
+
+    try {
+      const { data } = await orderAPI.validateDiscount(couponCode, total);
+      setDiscount(data.discountAmount);
+      setSuccess(`✅ Coupon applied! Discount: ₹${data.discountAmount.toFixed(2)}`);
+      setError('');
+    } catch (err) {
+      setError(err.response?.data?.error || 'Invalid coupon code');
+      setDiscount(0);
+    }
+  };
 
   const handleCheckout = async () => {
     if (!deliveryAddress.trim()) {
@@ -20,7 +39,7 @@ const Cart = () => {
 
     setLoading(true);
     try {
-      await orderAPI.createOrder(deliveryAddress, notes);
+      await orderAPI.createOrder(deliveryAddress, notes, couponCode || undefined);
       setSuccess('Order placed successfully!');
       await clearCart();
       setTimeout(() => navigate('/orders'), 2000);
@@ -99,9 +118,36 @@ const Cart = () => {
                 <span>Delivery</span>
                 <span>Free</span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 'bold', color: '#00bcd4' }}>
+              {discount > 0 && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', color: '#FF6B9D' }}>
+                  <span>Discount</span>
+                  <span>-₹{discount.toFixed(2)}</span>
+                </div>
+              )}
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 'bold', color: '#FF6B9D' }}>
                 <span>Total</span>
-                <span>₹{total.toFixed(2)}</span>
+                <span>₹{(total - discount).toFixed(2)}</span>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Coupon Code (Optional)</label>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <input
+                  type="text"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+                  className="form-control"
+                  placeholder="Enter coupon code"
+                  style={{ flex: 1 }}
+                />
+                <button
+                  onClick={handleApplyCoupon}
+                  className="btn btn-primary"
+                  style={{ padding: '12px 16px' }}
+                >
+                  Apply
+                </button>
               </div>
             </div>
 
@@ -131,7 +177,7 @@ const Cart = () => {
               onClick={handleCheckout}
               disabled={loading || cart.items.length === 0}
               className="btn btn-primary"
-              style={{ width: '100%', padding: '12px' }}
+              style={{ width: '100%', padding: '12px', marginTop: '12px' }}
             >
               {loading ? 'Placing Order...' : 'Place Order'}
             </button>
